@@ -66,17 +66,20 @@
 
 /* Input Box Styling */
 .input-container {
+  margin-top: 30px;
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
 .input {
-  width: 60px;
+  width: 50px;
   text-align: center;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
   font-size: 14px;
+  background-color: aliceblue;
+  color: rgb(255, 0, 89);
 }
 

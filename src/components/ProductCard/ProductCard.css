@@ -82,3 +82,11 @@ input[type="radio"] {
 input[type="radio"]:checked {
   background-color: hsl(345, 67%, 45%);
 }
+label{
+  margin-bottom: 15px;
+}
+h3{
+  color: #ff1658;
+  font-weight: bold;
+  font-size: 25px;
+}

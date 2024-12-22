@@ -74,7 +74,7 @@ button:focus-visible {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 2fr));
   gap: 16px;
-  padding: 16px;
+
 }
 
 
@@ -86,4 +86,15 @@ button:focus-visible {
   
 .sidebar {
   margin: 40px;
+}
+h1{
+  text-align: center;
+  margin-bottom: 40px;
+  color: rgb(255, 0, 93);
+}
+#products-per-page {
+  margin: 30px;
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #5b5959;
 }
