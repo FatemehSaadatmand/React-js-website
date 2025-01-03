@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import ProductCard from "./ProductCard/ProductCard";
 import Pagination from "./Pagination/Pagination";
 
@@ -69,7 +70,9 @@ const ProductList = ({ selectedCategory, currentPage, setCurrentPage, searchQuer
 
       <div className="product-grid">
         {products.map((product) => (
-          <ProductCard key={product._id} product={product} />
+          <Link to={`/product/${product._id}`} key={product._id}>
+            <ProductCard product={product} />
+          </Link>
         ))}
       </div>
 
@@ -84,4 +87,3 @@ const ProductList = ({ selectedCategory, currentPage, setCurrentPage, searchQuer
 };
 
 export default ProductList;
-

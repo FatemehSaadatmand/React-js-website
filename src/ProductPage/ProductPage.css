@@ -1,0 +1,13 @@
+.product-page{
+    display: flex;
+    gap: 150px;
+    margin: 50px;
+}
+.productpage-image {
+    width: 400px;
+    border-radius: 10%;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    -ms-border-radius: 10%;
+    -o-border-radius: 10%;
+}
