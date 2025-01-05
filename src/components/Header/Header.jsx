@@ -13,7 +13,6 @@ const Header = ({
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Fetch categories on component mount
   useEffect(() => {
     fetch("https://kaaryar-ecom.liara.run/v1/categories")
       .then((response) => response.json())
@@ -21,7 +20,6 @@ const Header = ({
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
 
-  // Sync query params with selected category
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const categoryFromParams = params.get("category");
@@ -35,7 +33,6 @@ const Header = ({
   const handleCategoryChange = (event) => {
     const categoryName = event.target.value;
 
-    // Set "All Categories" or find the category ID
     if (categoryName === "All Categories") {
       setSelectedCategory("All Categories");
     } else {
@@ -45,7 +42,6 @@ const Header = ({
 
     setCurrentPage(1);
 
-    // Update query params
     const params = new URLSearchParams(location.search);
     if (categoryName === "All Categories") {
       params.delete("category");
@@ -53,7 +49,7 @@ const Header = ({
       const category = categories.find((cat) => cat.name === categoryName);
       params.set("category", category ? category._id : "");
     }
-    params.set("page", 1); // Reset to page 1 on category change
+    params.set("page", 1); 
     navigate(`?${params.toString()}`);
   };
 
@@ -62,7 +58,6 @@ const Header = ({
     setSearchQuery(query);
     setCurrentPage(1);
 
-    // Update query params
     const params = new URLSearchParams(location.search);
     if (selectedCategory && selectedCategory !== "All Categories") {
       params.set("category", selectedCategory);
@@ -72,7 +67,7 @@ const Header = ({
     } else {
       params.delete("search");
     }
-    params.set("page", 1); // Reset to page 1 on search
+    params.set("page", 1); 
     navigate(`?${params.toString()}`);
   };
 
