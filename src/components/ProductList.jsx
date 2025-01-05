@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useSearchParams } from "react-router-dom";
 import ProductCard from "./ProductCard/ProductCard";
 import Pagination from "./Pagination/Pagination";
 
-const ProductList = ({ selectedCategory, currentPage, setCurrentPage, searchQuery }) => {
+const ProductList = ({ currentPage, setCurrentPage, searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [productsPerPage, setProductsPerPage] = useState(10);
   const [totalProducts, setTotalProducts] = useState(0);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCategory = searchParams.get("category") || "All Categories";
 
   useEffect(() => {
     let url = "https://kaaryar-ecom.liara.run/v1/products";
