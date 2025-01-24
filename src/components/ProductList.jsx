@@ -1,39 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import React, { useState, useEffect, useMemo } from "react";
+import { Link, useLocation } from "react-router-dom";
 import ProductCard from "./ProductCard/ProductCard";
 import Pagination from "./Pagination/Pagination";
+import { ROOT_ID } from "../configs/constants";
 
-const ProductList = ({ currentPage, setCurrentPage, searchQuery }) => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [productsPerPage, setProductsPerPage] = useState(10);
   const [totalProducts, setTotalProducts] = useState(0);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selectedCategory = searchParams.get("category") || "All Categories";
-
+  const location = useLocation();
+  const urlParams =  useMemo(() => new URLSearchParams(location.search), [location.search]);
+  
   useEffect(() => {
     let url = "https://kaaryar-ecom.liara.run/v1/products";
     const params = {
-      page: currentPage,
       limit: productsPerPage,
     };
-
-    if (selectedCategory && selectedCategory !== "All Categories") {
-      params.category = selectedCategory;
+    if (urlParams.get("page")) {
+      params.page = urlParams.get("page");
     }
 
-    if (searchQuery) {
-      params.search = searchQuery;
+    if (urlParams.get("category") !== ROOT_ID && urlParams.get("category")) {
+      params.category = urlParams.get("category");
     }
 
-    url += "?" + new URLSearchParams(params).toString();
+    if (urlParams.get("search")) {
+      params.search = urlParams.get("search");
+    }
+
+    const queryString = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
 
     setIsLoading(true);
     setError(null);
 
-    fetch(url)
+
+    fetch(`${url}?${queryString}`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.products || []);
@@ -44,11 +47,11 @@ const ProductList = ({ currentPage, setCurrentPage, searchQuery }) => {
         setError("Failed to fetch products");
         setIsLoading(false);
       });
-  }, [selectedCategory, currentPage, productsPerPage, searchQuery]);
+  }, [productsPerPage, urlParams]);
 
   const handleProductsPerPageChange = (e) => {
     setProductsPerPage(Number(e.target.value));
-    setCurrentPage(1);
+    urlParams.set("page", 1);
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -80,8 +83,8 @@ const ProductList = ({ currentPage, setCurrentPage, searchQuery }) => {
       </div>
 
       <Pagination
-        currentPage={currentPage}
-        setPage={setCurrentPage}
+        currentPage={urlParams.get("page")}
+        setPage={page => urlParams.set("page", page)}
         totalProducts={totalProducts}
         productsPerPage={productsPerPage}
       />

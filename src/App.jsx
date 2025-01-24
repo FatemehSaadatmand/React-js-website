@@ -12,7 +12,6 @@ import ProductPage from "./ProductPage/ProductPage";
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -24,8 +23,6 @@ const App = () => {
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
         setCurrentPage={setCurrentPage}
       />
       <main>
@@ -50,8 +47,6 @@ const App = () => {
                       selectedCategory={selectedCategory}
                       currentPage={currentPage}
                       setCurrentPage={setCurrentPage}
-                      searchQuery={searchQuery}
-                      setSearchQuery={setSearchQuery}
                     />
                   </div>
                 </div>
