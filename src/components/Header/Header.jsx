@@ -1,75 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { ROOT_ID } from "../../configs/constants";
 import "./Header.css";
 
-const Header = ({
-  selectedCategory,
-  setSelectedCategory,
-  searchQuery,
-  setSearchQuery,
-  setCurrentPage,
-}) => {
+const Header = () => {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const params = new URLSearchParams(location.search);
+
 
   useEffect(() => {
     fetch("https://kaaryar-ecom.liara.run/v1/categories")
       .then((response) => response.json())
-      .then((data) => setCategories(data))
+      .then((data) => {
+        const modifiedData = [{name: "All Categories", _id: ROOT_ID}, ...data];
+        setCategories(modifiedData)
+      })
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const categoryFromParams = params.get("category");
-    if (categoryFromParams) {
-      setSelectedCategory(categoryFromParams);
-    } else {
-      setSelectedCategory("All Categories");
-    }
-  }, [location.search, setSelectedCategory]);
 
   const handleCategoryChange = (event) => {
     const categoryName = event.target.value;
 
-    if (categoryName === "All Categories") {
-      setSelectedCategory("All Categories");
-    } else {
-      const category = categories.find((cat) => cat.name === categoryName);
-      setSelectedCategory(category ? category._id : null);
-    }
+    const category = categories.find((cat) => cat.name === categoryName);
 
-    setCurrentPage(1);
-
-    const params = new URLSearchParams(location.search);
-    if (categoryName === "All Categories") {
-      params.delete("category");
-    } else {
-      const category = categories.find((cat) => cat.name === categoryName);
-      params.set("category", category ? category._id : "");
-    }
+    params.set("category", category ? category._id : null);
+    
     params.set("page", 1); 
+
     navigate(`?${params.toString()}`);
   };
 
   const handleSearchChange = (event) => {
     const query = event.target.value;
-    setSearchQuery(query);
-    setCurrentPage(1);
+    params.set("page", 1);
 
-    const params = new URLSearchParams(location.search);
-    if (selectedCategory && selectedCategory !== "All Categories") {
-      params.set("category", selectedCategory);
-    }
-    if (query) {
-      params.set("search", query);
+    if (!query) {
+      params.delete("search")
     } else {
-      params.delete("search");
+      params.set("search", query)
     }
-    params.set("page", 1); 
+
     navigate(`?${params.toString()}`);
   };
+
 
   return (
     <header className="header">
@@ -84,14 +59,9 @@ const Header = ({
         <div className="logo">Electro<span>.</span></div>
         <div className="search-bar">
           <select
-            value={
-              selectedCategory === "All Categories"
-                ? "All Categories"
-                : categories.find((c) => c._id === selectedCategory)?.name || "All Categories"
-            }
+            value={categories.find((c) => c._id === params.get("category"))?.name}
             onChange={handleCategoryChange}
           >
-            <option>All Categories</option>
             {categories.map((category) => (
               <option key={category._id} value={category.name}>
                 {category.name}
@@ -101,7 +71,7 @@ const Header = ({
           <input
             type="text"
             placeholder="Search here"
-            value={searchQuery}
+            value={params.get("search") ? params.get("search") : ""}
             onChange={handleSearchChange}
           />
           <button>Search</button>
