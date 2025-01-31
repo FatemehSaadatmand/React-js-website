@@ -8,33 +8,18 @@ const Footer = () => {
         <h3>Sign Up for the NEWSLETTER</h3>
         <div className="newsletter-input">
           <input type="email" placeholder="Enter Your Email" />
-          <button><i class="fa fa-envelope"></i> Subscribe</button>
+          <button>Subscribe</button>
         </div>
-        <ul className="social-icons">
-
-								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-instagram"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
-								</li>
-        </ul>
+        <div className="social-icons">
+          <span>Facebook</span>
+          <span>Twitter</span>
+          <span>Instagram</span>
+        </div>
       </div>
       <div className="footer-links">
         <div className="about-us">
           <h4>ABOUT US</h4>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, dolores eligendi iure quia quae quasi sunt, cum qui reprehenderit reiciendis explicabo </p>
-          <ul >
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
-								</ul>
         </div>
         <div className="categories">
           <h4>CATEGORIES</h4>
