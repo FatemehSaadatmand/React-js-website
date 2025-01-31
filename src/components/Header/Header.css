@@ -1,87 +1,81 @@
 .header {
-    font-family: Arial, sans-serif;
-    background: #0f0229;
-    color: #fff;
-    width: 100vw;
-  }
-  
-  .top-bar {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    font-size: 14px;
-    background: #170931;
-  }
-  
-  .main-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-  }
-  
-  .logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: rgb(249, 247, 248);
-  }
-  .logo span{
-    font-size: 32px;
-    font-weight: bold;
-    color: #D10024;
-  }
-  
-  .cart-wish button{
-    background: none;
-  }
-  .search-bar{
-    display: flex;
-  }
-  .search-bar select{
-    border-radius: 40px 0px 0px 40px;
-    margin-left: 15px;
-    text-align: center;
-  }
-  .search-bar select, .search-bar input {
-    background: #d2d2d2;
-    color: #000;
-    height: 40px;
-    border: none;
-    padding: 0;
-
-  }
-
-  
-  .search-bar button {
-    height: 40px;
-    padding: 5px 12px;
-    background:#D10024;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 0px 40px 40px 0px;
+  font-family: Arial, sans-serif;
+  background: #0f0229;
+  color: #fff;
+  width: 100vw;
 }
-  
-  .icons {
-    font-size: 14px;
-  }
-  
-  .navbar {
-    display: flex;
-    padding: 20px 30px;
-    justify-content: flex-start;
-    gap: 20px;
-    background: #ffffff;
-  }
-  
-  .navbar a {
-    color: #4a4a4a;
-    text-decoration: none;
-    font-size: 16px;
-  }
-  
-  .navbar a:hover {
-    color: #D10024;
-    text-decoration: underline;
-  }
-  
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 14px;
+  background: #170931;
+}
+
+.main-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(249, 247, 248);
+}
+.logo span{
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(242, 3, 122);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar select, .search-bar input {
+  padding: 5px;
+  background: #d2d2d2;
+  color: #000;
+  border: 1px solid gray;
+}
+
+
+.search-bar button {
+  padding: 5px 12px;
+  background: rgb(255, 0, 55);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0%;
+  -webkit-border-radius: 0%;
+  -moz-border-radius: 0%;
+  -ms-border-radius: 0%;
+  -o-border-radius: 0%;
+}
+
+.icons {
+  font-size: 14px;
+}
+
+.navbar {
+  display: flex;
+  padding: 20px 30px;
+  justify-content: flex-start;
+  gap: 20px;
+  background: #ffffff;
+}
+
+.navbar a {
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar a:hover {
+  color: rgb(255, 0, 93);
+  text-decoration: underline;
+}
