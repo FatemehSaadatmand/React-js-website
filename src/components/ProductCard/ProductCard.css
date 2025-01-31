@@ -20,7 +20,7 @@
   -o-border-radius: 2px;
 }
 .product-card:hover{
-  border: 3px solid #D10024;
+  border: 3px solid #ff1658;
 }
 .new-badge {
   position: absolute;
@@ -31,7 +31,7 @@
   font-weight: bold;
   color: #fff;
   border-radius: 5px;
-  background-color: #D10024;
+  background-color: #db2b60;
 }
 
 .product-image {
@@ -50,10 +50,10 @@
 .product-price{
   font-size: 18px;
   font-weight: bold;
-  color: #D10024;
+  color: #db2b60;
 }
 .product-rating{
-  color: #D10024;
+  color: #db2b60;
   font-size: 25px;
   padding-bottom: 10px;
 }
@@ -80,13 +80,13 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked {
-  background-color: #D10024;
+  background-color: hsl(345, 67%, 45%);
 }
 label{
   margin-bottom: 15px;
 }
 h3{
-  color: #D10024;
+  color: #ff1658;
   font-weight: bold;
   font-size: 25px;
 }

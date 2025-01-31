@@ -3,32 +3,23 @@
     flex-direction: column;
     align-items: center;
 }
-.newsletter-input{
-    display: flex;
 
-}
 .newsletter-input input{
-    border-radius: 40px 0px 0px 40px;
-    -webkit-border-radius: 40px 0px 0px 40px;
-    -moz-border-radius: 40px 0px 0px 40px;
-    -ms-border-radius: 40px 0px 0px 40px;
-    -o-border-radius: 40px 0px 0px 40px;
-    height: 48px;
-    width: 300px;
-    padding-left: 30px;
-    background: #e2e2e2;
-    color: #000;
+height: 48px;
+width: 200px;
+background: #e2e2e2;
+color: #000;
 border: none;
 }
 .newsletter-input button{
     color: white;
-    background: #D10024;
+    background: #f00f4f;
+    border-radius: 0%;
     height: 50px;
-    border-radius: 0px 40px 40px 0px;
-    -webkit-border-radius: 0px 40px 40px 0px;
-    -moz-border-radius: 0px 40px 40px 0px;
-    -ms-border-radius: 0px 40px 40px 0px;
-    -o-border-radius: 0px 40px 40px 0px;
+    -webkit-border-radius: 0%;
+    -moz-border-radius: 0%;
+    -ms-border-radius: 0%;
+    -o-border-radius: 0%;
 }
 .social-icons{
     margin: 30px;
@@ -39,8 +30,8 @@ border: none;
     display: flex;
     width: 100%;
     justify-content: space-around;
-    background: #15161D;
-    color: #B9BABC;
+    background: #0f012e;
+    color: white;
 }
 ul{
     list-style: none;
@@ -48,24 +39,4 @@ ul{
 }
 .about-us{
     width: 15%;
-}
-.about-us a{
-    color: #B9BABC;
-}
-.about-us a i{
-    color: #D10024;
-}
-.social-icons i{
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #E4E7ED;
-    background-color: #FFF;
-    color: black;
-
-}
-.categories li, .information li, .service li{
-    padding: 10px;
-}
-i{
-    padding: 5px;
 }

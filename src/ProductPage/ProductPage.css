@@ -11,10 +11,3 @@
     -ms-border-radius: 10%;
     -o-border-radius: 10%;
 }
-.product-page button, .product-page input{
-    background: none;
-    color: #000;
-    margin-top: 20px;
-    border: 1px solid #ff1058;
-    margin-right: 10px;
-}
