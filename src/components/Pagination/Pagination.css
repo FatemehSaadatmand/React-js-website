@@ -11,7 +11,7 @@ button:disabled{
     color: #858585;
 }
 .pagination button.active {
-    background-color: #f91678;
+    background-color: #D10024;
     color: #fcfcfc;
     font-weight: bold;
   }

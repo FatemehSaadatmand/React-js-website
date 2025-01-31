@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Header.css";
+import 'font-awesome/css/font-awesome.min.css';
 
 const Header = ({
   selectedCategory,
@@ -8,12 +9,15 @@ const Header = ({
   searchQuery,
   setSearchQuery,
   setCurrentPage,
+  cartItems,
+  setCartItems,
+  totalPrice,
+  totalItems,
 }) => {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Fetch categories on component mount
   useEffect(() => {
     fetch("https://kaaryar-ecom.liara.run/v1/categories")
       .then((response) => response.json())
@@ -21,7 +25,6 @@ const Header = ({
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
 
-  // Sync query params with selected category
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const categoryFromParams = params.get("category");
@@ -35,7 +38,6 @@ const Header = ({
   const handleCategoryChange = (event) => {
     const categoryName = event.target.value;
 
-    // Set "All Categories" or find the category ID
     if (categoryName === "All Categories") {
       setSelectedCategory("All Categories");
     } else {
@@ -45,7 +47,6 @@ const Header = ({
 
     setCurrentPage(1);
 
-    // Update query params
     const params = new URLSearchParams(location.search);
     if (categoryName === "All Categories") {
       params.delete("category");
@@ -53,7 +54,7 @@ const Header = ({
       const category = categories.find((cat) => cat.name === categoryName);
       params.set("category", category ? category._id : "");
     }
-    params.set("page", 1); // Reset to page 1 on category change
+    params.set("page", 1); 
     navigate(`?${params.toString()}`);
   };
 
@@ -62,7 +63,6 @@ const Header = ({
     setSearchQuery(query);
     setCurrentPage(1);
 
-    // Update query params
     const params = new URLSearchParams(location.search);
     if (selectedCategory && selectedCategory !== "All Categories") {
       params.set("category", selectedCategory);
@@ -72,16 +72,16 @@ const Header = ({
     } else {
       params.delete("search");
     }
-    params.set("page", 1); // Reset to page 1 on search
+    params.set("page", 1); 
     navigate(`?${params.toString()}`);
   };
 
   return (
     <header className="header">
       <div className="top-bar">
-        <p>+021-95-51-84 | email@email.com | 1734 Stonecoal Road</p>
+        <p><i class="fa fa-phone"></i> +021-95-51-84 |<i class="fa fa-envelope-o"></i> email@email.com |<i class="fa fa-map-marker"></i> 1734 Stonecoal Road</p>
         <div>
-          <span>$ USD</span> | <span>My Account</span>
+          <span><i className="fa fa-dollar"></i> USD</span> | <span><i className="fa fa-user-o"></i>My Account</span>
         </div>
       </div>
 
@@ -111,6 +111,15 @@ const Header = ({
           />
           <button>Search</button>
         </div>
+        <div className="cart-wish">
+        <i class="fa fa-heart-o"></i>
+          <button>Wishlist</button>
+          <i class="fa fa-shopping-cart"></i>
+          <button>Cart <span className="added-to-cart">{totalItems}</span></button>
+        </div>
+      </div>
+      <div className="cart-total">
+        <span>Total: ${totalPrice}</span>
       </div>
     </header>
   );
