@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom"; 
 import "./CategoryFilter.css";
 
 const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     fetch("https://kaaryar-ecom.liara.run/v1/categories")
@@ -11,8 +14,26 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const categoryFromParams = params.get("category");
+    if (categoryFromParams) {
+      setSelectedCategory(categoryFromParams);
+    }
+  }, [location.search, setSelectedCategory]);
+
   const handleCheckboxChange = (event) => {
-    setSelectedCategory(event.target.value);
+    const categoryId = event.target.value;
+    setSelectedCategory(categoryId);
+
+    const params = new URLSearchParams(location.search);
+    if (categoryId) {
+      params.set("category", categoryId);
+    } else {
+      params.delete("category");
+    }
+    params.set("page", 1); 
+    navigate(`?${params.toString()}`);
   };
 
   return (
