@@ -28,33 +28,38 @@
   .logo span{
     font-size: 32px;
     font-weight: bold;
-    color: rgb(242, 3, 122);
+    color: #D10024;
   }
   
-  .search-bar {
+  .cart-wish button{
+    background: none;
+  }
+  .search-bar{
     display: flex;
-    align-items: center;
   }
-  
+  .search-bar select{
+    border-radius: 40px 0px 0px 40px;
+    margin-left: 15px;
+    text-align: center;
+  }
   .search-bar select, .search-bar input {
-    padding: 5px;
     background: #d2d2d2;
     color: #000;
-    border: 1px solid gray;
+    height: 40px;
+    border: none;
+    padding: 0;
+
   }
 
   
   .search-bar button {
+    height: 40px;
     padding: 5px 12px;
-    background: rgb(255, 0, 55);
+    background:#D10024;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 0%;
-    -webkit-border-radius: 0%;
-    -moz-border-radius: 0%;
-    -ms-border-radius: 0%;
-    -o-border-radius: 0%;
+    border-radius: 0px 40px 40px 0px;
 }
   
   .icons {
@@ -76,7 +81,7 @@
   }
   
   .navbar a:hover {
-    color: rgb(255, 0, 93);
+    color: #D10024;
     text-decoration: underline;
   }
   
