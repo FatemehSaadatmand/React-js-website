@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useSearchParams } from "react-router-dom";
 import ProductCard from "./ProductCard/ProductCard";
 import Pagination from "./Pagination/Pagination";
 
-const ProductList = ({ selectedCategory, currentPage, setCurrentPage, searchQuery }) => {
+const ProductList = ({ setCurrentPage, searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [productsPerPage, setProductsPerPage] = useState(10);
   const [totalProducts, setTotalProducts] = useState(0);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCategory = searchParams.get("category") || "All Categories";
+  const currentPage = parseInt(searchParams.get("page")) || 1;
 
   useEffect(() => {
     let url = "https://kaaryar-ecom.liara.run/v1/products";
@@ -45,7 +49,11 @@ const ProductList = ({ selectedCategory, currentPage, setCurrentPage, searchQuer
 
   const handleProductsPerPageChange = (e) => {
     setProductsPerPage(Number(e.target.value));
-    setCurrentPage(1);
+    setSearchParams({ ...Object.fromEntries(searchParams), page: 1 });
+  };
+
+  const handlePageChange = (page) => {
+    setSearchParams({ ...Object.fromEntries(searchParams), page });
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -78,7 +86,7 @@ const ProductList = ({ selectedCategory, currentPage, setCurrentPage, searchQuer
 
       <Pagination
         currentPage={currentPage}
-        setPage={setCurrentPage}
+        setPage={handlePageChange}
         totalProducts={totalProducts}
         productsPerPage={productsPerPage}
       />
