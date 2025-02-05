@@ -38,7 +38,7 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
 
   return (
     <div className="categories">
-      <h3>Categories</h3>
+      <h3 className="category-title">CATEGORIES</h3>
       {categories.map((category) => (
         <label key={category._id}>
           <input
@@ -47,6 +47,7 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
             checked={selectedCategory === category._id}
             onChange={handleCheckboxChange}
           />
+          
           {category.name}
         </label>
       ))}

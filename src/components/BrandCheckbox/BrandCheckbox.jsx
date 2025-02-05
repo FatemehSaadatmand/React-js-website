@@ -4,7 +4,7 @@ const BrandCheckbox = () => {
 
  return(
     <div>
-        <h3>Brand</h3>
+        <h3 className="brand-title">BRAND</h3>
         <div className="brand-inputs">
         <label>
         <input type="radio" name="brand" />SAMSUNG

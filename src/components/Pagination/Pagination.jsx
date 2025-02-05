@@ -13,7 +13,7 @@ const Pagination = ({ currentPage, setPage, totalProducts, productsPerPage }) =>
 
   return (
     <div className="pagination">
-      <button
+      <button className="pagination-btn"
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
       >
@@ -21,16 +21,16 @@ const Pagination = ({ currentPage, setPage, totalProducts, productsPerPage }) =>
       </button>
 
       {[...Array(totalPages)].map((_, index) => (
-        <button
+        <button 
           key={index + 1}
           onClick={() => handlePageChange(index + 1)}
-          className={currentPage === index + 1 ? "active" : ""}
+          className={currentPage === index + 1 ? "pagination-btn-active" : "pagination-btn"}
         >
           {index + 1}
         </button>
       ))}
 
-      <button
+      <button className="pagination-btn"
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
       >
