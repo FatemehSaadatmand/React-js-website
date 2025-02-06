@@ -40,8 +40,8 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
     <div className="categories">
       <h3 className="category-title">CATEGORIES</h3>
       {categories.map((category) => (
-        <label key={category._id}>
-          <input
+        <label className="label" key={category._id}>
+          <input className="input-radio"
             type="radio"
             value={category._id}
             checked={selectedCategory === category._id}

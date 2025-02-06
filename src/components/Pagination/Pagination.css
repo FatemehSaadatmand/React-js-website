@@ -8,8 +8,9 @@
     padding: 10px;
     border-radius: 5px;
 }
-button:disabled{
+.btn:disabled{
     color: #858585;
+    pointer-events: none;
 }
 .pagination-btn-active {
     background-color: #D10024 !important; 

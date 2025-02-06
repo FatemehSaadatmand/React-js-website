@@ -6,15 +6,15 @@ const BrandCheckbox = () => {
     <div>
         <h3 className="brand-title">BRAND</h3>
         <div className="brand-inputs">
-        <label>
-        <input type="radio" name="brand" />SAMSUNG
+        <label className="label">
+        <input className="input-radio" type="radio" name="brand" />SAMSUNG
         </label>
 
-        <label>
-        <input type="radio" name="brand" />SONY
+        <label className="label">
+        <input className="input-radio" type="radio" name="brand" />SONY
         </label> 
-        <label>
-        <input type="radio"  name="brand"/>APPLE
+        <label className="label">
+        <input className="input-radio" type="radio"  name="brand"/>APPLE
         </label>
         </div>
     </div>

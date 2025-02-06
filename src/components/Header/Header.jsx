@@ -109,13 +109,13 @@ const Header = ({
             value={searchQuery}
             onChange={handleSearchChange}
           />
-          <button className="searchbar-btn">Search</button>
+          <button className="btn searchbar-btn">Search</button>
         </div>
         <div className="cart-wish">
         <i class="fa fa-heart-o"></i>
-          <button className="btn-transparent">Wishlist</button>
+          <button className="btn btn-transparent">Wishlist</button>
           <i class="fa fa-shopping-cart"></i>
-          <button className="btn-transparent">Cart <span className="added-to-cart">{totalItems}</span></button>
+          <button className="btn btn-transparent">Cart <span className="added-to-cart">{totalItems}</span></button>
         </div>
       </div>
       <div className="cart-total">

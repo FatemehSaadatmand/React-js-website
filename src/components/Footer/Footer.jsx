@@ -8,7 +8,7 @@ const Footer = () => {
         <p className="newsletter-title">Sign Up for the <strong>NEWSLETTER</strong></p>
         <div className="newsletter-input">
           <input className="email-input" type="email" placeholder="Enter Your Email" />
-          <button className="subscribe-email"><i class="fa fa-envelope"></i> Subscribe</button>
+          <button className="btn subscribe-email"><i class="fa fa-envelope"></i> Subscribe</button>
         </div>
         <ul className="social-icons">
 

@@ -13,7 +13,7 @@ const Pagination = ({ currentPage, setPage, totalProducts, productsPerPage }) =>
 
   return (
     <div className="pagination">
-      <button className="pagination-btn"
+      <button className="btn pagination-btn"
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
       >
@@ -24,13 +24,13 @@ const Pagination = ({ currentPage, setPage, totalProducts, productsPerPage }) =>
         <button 
           key={index + 1}
           onClick={() => handlePageChange(index + 1)}
-          className={currentPage === index + 1 ? "pagination-btn-active" : "pagination-btn"}
+          className={currentPage === index + 1 ? "btn pagination-btn-active" : "btn pagination-btn"}
         >
           {index + 1}
         </button>
       ))}
 
-      <button className="pagination-btn"
+      <button className="btn pagination-btn"
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
       >
