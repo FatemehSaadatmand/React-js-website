@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import ProductCard from "./ProductCard/ProductCard";
 import Pagination from "./Pagination/Pagination";
+import { ROOT_CATEGORY, QUERY_PARAMS, DEFAULT_PAGE} from "../configs/constants";
 
 const ProductList = ({ setCurrentPage, searchQuery }) => {
   const [products, setProducts] = useState([]);
@@ -11,8 +12,8 @@ const ProductList = ({ setCurrentPage, searchQuery }) => {
   const [totalProducts, setTotalProducts] = useState(0);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedCategory = searchParams.get("category") || "All Categories";
-  const currentPage = parseInt(searchParams.get("page")) || 1;
+  const selectedCategory = searchParams.get(QUERY_PARAMS.CATEGORY) || ROOT_CATEGORY;
+  const currentPage = parseInt(searchParams.get(QUERY_PARAMS.PAGE)) || DEFAULT_PAGE;
 
   useEffect(() => {
     let url = "https://kaaryar-ecom.liara.run/v1/products";
@@ -21,7 +22,7 @@ const ProductList = ({ setCurrentPage, searchQuery }) => {
       limit: productsPerPage,
     };
 
-    if (selectedCategory && selectedCategory !== "All Categories") {
+    if (selectedCategory && selectedCategory !== ROOT_CATEGORY) {
       params.category = selectedCategory;
     }
 
