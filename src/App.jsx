@@ -34,7 +34,6 @@ const App = () => {
             path="/"
             element={
               <div>
-                <h1>Product Store</h1>
                 <div className="flex">
                   <div className="sidebar">
                     <CategoryFilter

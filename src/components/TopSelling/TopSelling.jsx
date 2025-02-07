@@ -36,7 +36,7 @@ const TopSelling = () => {
 
   return (
     <div className="top-selling">
-      <h3>Top Selling Products</h3>
+      <h3 className="top-sell-title">TOP SELLING</h3>
       <div className="top-selling-grid">
         {topProducts.map((product) => (
           <div key={product._id} className="top-selling-card">

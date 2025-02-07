@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Header.css";
+import 'font-awesome/css/font-awesome.min.css';
 
 const Header = ({
   selectedCategory,
@@ -8,6 +9,10 @@ const Header = ({
   searchQuery,
   setSearchQuery,
   setCurrentPage,
+  cartItems,
+  setCartItems,
+  totalPrice,
+  totalItems,
 }) => {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
@@ -74,16 +79,16 @@ const Header = ({
   return (
     <header className="header">
       <div className="top-bar">
-        <p>+021-95-51-84 | email@email.com | 1734 Stonecoal Road</p>
+        <p><i class="color-red fa fa-phone"></i> +021-95-51-84 |<i class="color-red fa fa-envelope-o"></i> email@email.com |<i class="color-red fa fa-map-marker"></i> 1734 Stonecoal Road</p>
         <div>
-          <span>$ USD</span> | <span>My Account</span>
+          <span><i className="color-red fa fa-dollar"></i> USD</span> | <span><i className="color-red fa fa-user-o"></i>My Account</span>
         </div>
       </div>
 
       <div className="main-bar">
-        <div className="logo">Electro<span>.</span></div>
+        <div className="logo">Electro<span className="color-red"> .</span></div>
         <div className="search-bar">
-          <select
+          <select className="searchbar-select"
             value={
               selectedCategory === "All Categories"
                 ? "All Categories"
@@ -98,14 +103,34 @@ const Header = ({
               </option>
             ))}
           </select>
-          <input
+          <input className="searchbar-input"
             type="text"
             placeholder="Search here"
             value={searchQuery}
             onChange={handleSearchChange}
           />
-          <button>Search</button>
+          <button className="btn searchbar-btn">Search</button>
         </div>
+        <div className="cart-wish">
+        <i class="fa fa-heart-o"></i>
+          <button className="btn btn-transparent">Wishlist</button>
+          <i class="fa fa-shopping-cart"></i>
+          <button className="btn btn-transparent">Cart <span className="added-to-cart">{totalItems}</span></button>
+        </div>
+      </div>
+      <div className="cart-total">
+        <span>Total: ${totalPrice}</span>
+      </div>
+			<div className="navbar">
+      <ul class="main-nav">
+						<li className="navbar-items"><a className="navbar-a active-text" href="#">Home</a></li>
+						<li className="navbar-items"><a className="navbar-a" href="#">Categories</a></li>
+						<li className="navbar-items"><a className="navbar-a" href="#">Hot Deals</a></li>
+						<li className="navbar-items"><a className="navbar-a" href="#">Laptops</a></li>
+						<li className="navbar-items"><a className="navbar-a" href="#">Smartphones</a></li>
+						<li className="navbar-items"><a className="navbar-a" href="#">Cameras</a></li>
+						<li className="navbar-items"><a className="navbar-a" href="#">Accessories</a></li>
+					</ul>
       </div>
     </header>
   );

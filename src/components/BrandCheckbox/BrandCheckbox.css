@@ -1,3 +1,6 @@
+.brand-title{
+    color: black;
+}
 .brand-inputs {
     display: flex;
     flex-direction: column;

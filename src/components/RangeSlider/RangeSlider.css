@@ -6,7 +6,9 @@
   font-family: Arial, sans-serif;
   margin: 40px;
 }
-
+.price-title{
+  color: black;
+}
 .slider-track {
   position: relative;
   width: 300px;
