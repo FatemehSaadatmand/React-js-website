@@ -8,32 +8,30 @@ const RangeSlider = () => {
   const maxLimit = 1000;
 
   const handleMinChange = (e) => {
-    const value = Math.min(Number(e.target.value), maxValue - 1); // Prevent overlap
+    const value = Math.min(Number(e.target.value), maxValue - 1); 
     setMinValue(value);
   };
 
   const handleMaxChange = (e) => {
-    const value = Math.max(Number(e.target.value), minValue + 1); // Prevent overlap
+    const value = Math.max(Number(e.target.value), minValue + 1); 
     setMaxValue(value);
   };
 
   const handleMinThumbChange = (e) => {
-    const value = Math.min(Number(e.target.value), maxValue - 1); // Prevent overlap
+    const value = Math.min(Number(e.target.value), maxValue - 1); 
     setMinValue(value);
   };
 
   const handleMaxThumbChange = (e) => {
-    const value = Math.max(Number(e.target.value), minValue + 1); // Prevent overlap
+    const value = Math.max(Number(e.target.value), minValue + 1); 
     setMaxValue(value);
   };
 
   return (
     <div>
-      <h3>Price</h3>
+      <h3 className="price-title">PRICE</h3>
           <div className="slider-container">
-      {/* Slider Track */}
       <div className="slider-track">
-        {/* Red Range */}
         <div
           className="range"
           style={{
@@ -41,7 +39,6 @@ const RangeSlider = () => {
             width: `${((maxValue - minValue) / (maxLimit - minLimit)) * 100}%`,
           }}
         />
-        {/* Left Thumb */}
         <input
           type="range"
           className="thumb"
@@ -50,7 +47,6 @@ const RangeSlider = () => {
           value={minValue}
           onChange={handleMinThumbChange}
         />
-        {/* Right Thumb */}
         <input
           type="range"
           className="thumb"
@@ -60,8 +56,6 @@ const RangeSlider = () => {
           onChange={handleMaxThumbChange}
         />
       </div>
-
-      {/* Input Fields */}
       <div className="input-container">
         <input
           type="number"

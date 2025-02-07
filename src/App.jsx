@@ -63,38 +63,38 @@ const App = () => {
         totalPrice={totalPrice}
         totalItems={totalItems}
       />
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <h1>Product Store</h1>
-              <div className="flex">
-                <div className="sidebar">
-                  <CategoryFilter
-                    selectedCategory={selectedCategory}
-                    setSelectedCategory={handleCategoryChange}
-                  />
-                  <RangeSlider />
-                  <BrandCheckbox />
-                  <TopSelling />
-                </div>
-                <div className="product-container">
-                  <ProductList
-                    selectedCategory={selectedCategory}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}
-                  />
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                <div className="flex">
+                  <div className="sidebar">
+                    <CategoryFilter
+                      selectedCategory={selectedCategory}
+                      setSelectedCategory={handleCategoryChange}
+                    />
+                    <RangeSlider />
+                    <BrandCheckbox />
+                    <TopSelling />
+                  </div>
+                  <div className="product-container">
+                    <ProductList
+                      selectedCategory={selectedCategory}
+                      currentPage={currentPage}
+                      setCurrentPage={setCurrentPage}
+                      searchQuery={searchQuery}
+                      setSearchQuery={setSearchQuery}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
           }
         />
         <Route path="/product/:id" element={<ProductPage handleAddToCart={handleAddToCart} />} />
       </Routes>
+     </main>
 
       <Footer />
     </Router>

@@ -51,10 +51,10 @@ const ProductPage = ({ handleAddToCart }) => {
         <p>Category: {product.category.name}</p>
         <p>Stock: {product.stock}</p>
         <p>Rating: {product.rating.toFixed(1)} ({product.ratingCount} reviews)</p>
-        <button onClick={handleAddProductToCart}>Add to Cart</button>
+        <button className="product-page-btn" onClick={handleAddProductToCart}>Add to Cart</button>
         <br />
         <span>Quantity: </span>
-        <input
+        <input className="product-page-input"
           type="number"
           value={quantity}
           min="1"
