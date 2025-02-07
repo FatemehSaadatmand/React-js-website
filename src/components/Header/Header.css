@@ -1,6 +1,6 @@
 .header {
     font-family: Arial, sans-serif;
-    background: #0f0229;
+    background: #15161D;
     color: #fff;
     width: 100vw;
   }
@@ -8,16 +8,18 @@
   .top-bar {
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 10px 60px;
     font-size: 14px;
-    background: #170931;
+    background: #1E1F29;
   }
-  
+  .color-red{
+    color: #D10024;
+  }
   .main-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 60px;
   }
   
   .logo {
@@ -25,36 +27,36 @@
     font-weight: bold;
     color: rgb(249, 247, 248);
   }
-  .logo span{
-    font-size: 32px;
-    font-weight: bold;
-    color: rgb(242, 3, 122);
-  }
-  
-  .search-bar {
+
+
+  .search-bar{
     display: flex;
-    align-items: center;
   }
-  
-  .search-bar select, .search-bar input {
-    padding: 5px;
+  .searchbar-select{
+    border-radius: 40px 0px 0px 40px;
+    margin-left: 15px;
+    text-align: center;
+  }
+  .searchbar-select, .searchbar-input {
     background: #d2d2d2;
     color: #000;
-    border: 1px solid gray;
-  }
+    height: 40px;
+    border: none;
+    padding: 0;
 
+  }
+  .searchbar-input{
+    width: 300px;
+  }
   
-  .search-bar button {
+  .searchbar-btn {
+    height: 40px;
     padding: 5px 12px;
-    background: rgb(255, 0, 55);
+    background:#D10024;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 0%;
-    -webkit-border-radius: 0%;
-    -moz-border-radius: 0%;
-    -ms-border-radius: 0%;
-    -o-border-radius: 0%;
+    border-radius: 0px 40px 40px 0px;
 }
   
   .icons {
@@ -69,14 +71,43 @@
     background: #ffffff;
   }
   
-  .navbar a {
+  .navbar-a {
     color: #4a4a4a;
     text-decoration: none;
     font-size: 16px;
   }
   
-  .navbar a:hover {
-    color: rgb(255, 0, 93);
+  .navbar-a:hover {
+    color: #D10024;
     text-decoration: underline;
   }
-  
+  .cart-wish{
+    display: flex;
+  }
+  .wish-cart-wrapper{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .btn-transparent{
+    background: none;
+  }
+  .navbar{
+    border-bottom: 1px solid gray;
+
+  }
+  .main-nav{
+    display: flex;
+    flex-direction: row;
+  }
+  .navbar-items{
+    margin-right: 20px;
+  }
+  .active-text{
+    color: #D10024;
+    border-bottom: 3px solid #D10024;
+  }
+  .cart-total{
+    padding-left: 70px;
+  }
