@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard/ProductCard";
 import Pagination from "./Pagination/Pagination";
 import { ROOT_CATEGORY, QUERY_PARAMS, DEFAULT_PAGE} from "../configs/constants";
 
-const ProductList = ({ setCurrentPage, searchQuery }) => {
+const ProductList = ({ searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
