@@ -9,8 +9,6 @@ const Header = ({
   searchQuery,
   setSearchQuery,
   setCurrentPage,
-  cartItems,
-  setCartItems,
   totalPrice,
   totalItems,
 }) => {
