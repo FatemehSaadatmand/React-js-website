@@ -50,7 +50,7 @@ const ProductList = ({ searchQuery }) => {
 
   const handleProductsPerPageChange = (e) => {
     setProductsPerPage(Number(e.target.value));
-    setSearchParams({ ...Object.fromEntries(searchParams), page: 1 });
+    setSearchParams({ ...Object.fromEntries(searchParams), page: DEFAULT_PAGE});
   };
 
   const handlePageChange = (page) => {
