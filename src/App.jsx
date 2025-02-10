@@ -19,7 +19,6 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    // Update localStorage whenever cartItems change
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
@@ -29,22 +28,22 @@ const App = () => {
   };
 
   const handleAddToCart = (product, quantity) => {
-    const updatedCart = [...cartItems];
-    const productIndex = updatedCart.findIndex((item) => item.id === product.id);
-
-    if (productIndex === -1) {
-      // If the product is not already in the cart, add it
-      updatedCart.push({ ...product, quantity });
-    } else {
-      // If the product is already in the cart, update its quantity
-      updatedCart[productIndex].quantity += quantity;
-    }
-
-    setCartItems(updatedCart);
+    setCartItems((prevCart) => {
+      const productIndex = prevCart.findIndex((item) => item._id === product._id);
+    
+      if (productIndex !== -1) {
+        return prevCart.map((item, index) =>
+          index === productIndex
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      } else {
+        return [...prevCart, { ...product, quantity }];
+      }
+    });
+    
   };
-
-  // Calculate total price and total items dynamically
-  const totalPrice = cartItems
+    const totalPrice = cartItems
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
 

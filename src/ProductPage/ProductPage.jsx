@@ -10,7 +10,6 @@ const ProductPage = ({ handleAddToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    console.log("Fetching product with ID:", id);
     fetch(`https://kaaryar-ecom.liara.run/v1/products/${id}`)
       .then((response) => {
         if (!response.ok) {
@@ -33,12 +32,10 @@ const ProductPage = ({ handleAddToCart }) => {
 
   const handleQuantityChange = (e) => {
     const newQuantity = parseInt(e.target.value, 10);
-    console.log("New quantity:", newQuantity);
     setQuantity(newQuantity);
   };
 
   const handleAddProductToCart = () => {
-    console.log("Adding product to cart:", product.name, "Quantity:", quantity);
     handleAddToCart(product, quantity);
   };
 
@@ -51,7 +48,7 @@ const ProductPage = ({ handleAddToCart }) => {
         <p>Category: {product.category.name}</p>
         <p>Stock: {product.stock}</p>
         <p>Rating: {product.rating.toFixed(1)} ({product.ratingCount} reviews)</p>
-        <button className="product-page-btn" onClick={handleAddProductToCart}>Add to Cart</button>
+        <button className="btn product-page-btn" onClick={handleAddProductToCart}>Add to Cart</button>
         <br />
         <span>Quantity: </span>
         <input className="product-page-input"
