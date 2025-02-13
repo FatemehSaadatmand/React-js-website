@@ -28,27 +28,25 @@ const App = () => {
   };
 
   const handleAddToCart = (product, quantity) => {
-    setCartItems((prevCart) => {
-      const productIndex = prevCart.findIndex((item) => item._id === product._id);
-    
-      if (productIndex !== -1) {
-        return prevCart.map((item, index) =>
-          index === productIndex
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        );
-      } else {
-        return [...prevCart, { ...product, quantity }];
-      }
-    });
-    
+    const updatedCart = [...cartItems];
+    const productIndex = updatedCart.findIndex((item) => item.id === product.id);
+
+    if (productIndex === -1) {
+      updatedCart.push({ ...product, quantity });
+    } else {
+      updatedCart[productIndex].quantity += quantity;
+    }
+
+    setCartItems(updatedCart);
   };
-    const totalPrice = cartItems
+
+  const totalPrice = cartItems
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
 
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
+  console.log (cartItems)
   return (
     <Router>
       <Header
