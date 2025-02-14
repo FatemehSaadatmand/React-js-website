@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Header.css";
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -9,8 +9,6 @@ const Header = ({
   searchQuery,
   setSearchQuery,
   setCurrentPage,
-  cartItems,
-  setCartItems,
   totalPrice,
   totalItems,
 }) => {
@@ -115,22 +113,24 @@ const Header = ({
         <i class="fa fa-heart-o"></i>
           <button className="btn btn-transparent">Wishlist</button>
           <i class="fa fa-shopping-cart"></i>
-          <button className="btn btn-transparent">Cart <span className="added-to-cart">{totalItems}</span></button>
-        </div>
+          <Link to="/cart" className="btn btn-transparent">
+            Cart <span className="added-to-cart">{totalItems}</span>
+          </Link>
+         </div>
       </div>
       <div className="cart-total">
         <span>Total: ${totalPrice}</span>
       </div>
-			<div className="navbar">
+      <div className="navbar">
       <ul class="main-nav">
-						<li className="navbar-items"><a className="navbar-a active-text" href="#">Home</a></li>
-						<li className="navbar-items"><a className="navbar-a" href="#">Categories</a></li>
-						<li className="navbar-items"><a className="navbar-a" href="#">Hot Deals</a></li>
-						<li className="navbar-items"><a className="navbar-a" href="#">Laptops</a></li>
-						<li className="navbar-items"><a className="navbar-a" href="#">Smartphones</a></li>
-						<li className="navbar-items"><a className="navbar-a" href="#">Cameras</a></li>
-						<li className="navbar-items"><a className="navbar-a" href="#">Accessories</a></li>
-					</ul>
+            <li className="navbar-items"><a className="navbar-a active-text" href="#">Home</a></li>
+            <li className="navbar-items"><a className="navbar-a" href="#">Categories</a></li>
+            <li className="navbar-items"><a className="navbar-a" href="#">Hot Deals</a></li>
+            <li className="navbar-items"><a className="navbar-a" href="#">Laptops</a></li>
+            <li className="navbar-items"><a className="navbar-a" href="#">Smartphones</a></li>
+            <li className="navbar-items"><a className="navbar-a" href="#">Cameras</a></li>
+            <li className="navbar-items"><a className="navbar-a" href="#">Accessories</a></li>
+          </ul>
       </div>
     </header>
   );
