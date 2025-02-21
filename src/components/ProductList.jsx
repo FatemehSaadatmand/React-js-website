@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import ProductCard from "./ProductCard/ProductCard";
-import Pagination from "./Pagination/Pagination";
+import ProductCard from "./ProductCard";
+import Pagination from "./Pagination";
 
 const ProductList = ({ currentPage, setCurrentPage, searchQuery }) => {
   const [products, setProducts] = useState([]);
