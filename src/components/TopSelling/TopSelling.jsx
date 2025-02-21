@@ -17,8 +17,6 @@ const TopSelling = () => {
         }
 
         const data = await response.json();
-        console.log("Fetched Data:", data);
-
         setTopProducts(data.slice(0, 3)); 
         setIsLoading(false);
       } catch (err) {
