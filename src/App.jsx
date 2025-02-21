@@ -46,7 +46,6 @@ const App = () => {
 
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
-  console.log (cartItems)
   return (
     <Router>
       <Header
