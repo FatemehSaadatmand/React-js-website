@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import ProductCard from "./ProductCard/ProductCard";
-import Pagination from "./Pagination/Pagination";
+import ProductCard from "../ProductCard/ProductCard";
+import Pagination from "../Pagination/Pagination";
+import { fetchProductListData } from "./requests"; 
+import { ROOT_CATEGORY, QUERY_PARAMS, DEFAULT_PAGE } from "../../configs/constants"
 
-const ProductList = ({ currentPage, setCurrentPage, searchQuery }) => {
+const ProductList = ({ searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -11,44 +13,37 @@ const ProductList = ({ currentPage, setCurrentPage, searchQuery }) => {
   const [totalProducts, setTotalProducts] = useState(0);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedCategory = searchParams.get("category") || "All Categories";
+  const selectedCategory = searchParams.get(QUERY_PARAMS.CATEGORY) || ROOT_CATEGORY;
+  const currentPage = parseInt(searchParams.get(QUERY_PARAMS.PAGE)) || DEFAULT_PAGE;
 
   useEffect(() => {
-    let url = "https://kaaryar-ecom.liara.run/v1/products";
-    const params = {
-      page: currentPage,
-      limit: productsPerPage,
-    };
-
-    if (selectedCategory && selectedCategory !== "All Categories") {
-      params.category = selectedCategory;
-    }
-
-    if (searchQuery) {
-      params.search = searchQuery;
-    }
-
-    url += "?" + new URLSearchParams(params).toString();
-
     setIsLoading(true);
     setError(null);
 
-    fetch(url)
-      .then((response) => response.json())
+    fetchProductListData({
+      currentPage,
+      productsPerPage,
+      selectedCategory,
+      searchQuery,
+    })
       .then((data) => {
-        setProducts(data.products || []);
-        setTotalProducts(data.pagination.totalItems || 0);
+        setProducts(data.products);
+        setTotalProducts(data.totalItems);
         setIsLoading(false);
       })
-      .catch(() => {
-        setError("Failed to fetch products");
+      .catch((err) => {
+        setError(err.message);
         setIsLoading(false);
       });
   }, [selectedCategory, currentPage, productsPerPage, searchQuery]);
 
   const handleProductsPerPageChange = (e) => {
     setProductsPerPage(Number(e.target.value));
-    setCurrentPage(1);
+    setSearchParams({ ...Object.fromEntries(searchParams), page: DEFAULT_PAGE });
+  };
+
+  const handlePageChange = (page) => {
+    setSearchParams({ ...Object.fromEntries(searchParams), page });
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -81,7 +76,7 @@ const ProductList = ({ currentPage, setCurrentPage, searchQuery }) => {
 
       <Pagination
         currentPage={currentPage}
-        setPage={setCurrentPage}
+        setPage={handlePageChange}
         totalProducts={totalProducts}
         productsPerPage={productsPerPage}
       />

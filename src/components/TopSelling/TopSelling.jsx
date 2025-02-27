@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./TopSelling.css"; 
+import { fetchTopSellingProducts } from "./requests"; 
+import "./TopSelling.css";
 
 const TopSelling = () => {
   const [topProducts, setTopProducts] = useState([]);
@@ -7,28 +8,19 @@ const TopSelling = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchTopProducts = async () => {
+    const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("https://kaaryar-ecom.liara.run/v1/products/top-rated");
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("Fetched Data:", data);
-
+        const data = await fetchTopSellingProducts();
         setTopProducts(data.slice(0, 3)); 
         setIsLoading(false);
       } catch (err) {
-        console.error("Fetch error:", err);
         setError(`Failed to fetch top-rated products: ${err.message}`);
         setIsLoading(false);
       }
     };
 
-    fetchTopProducts();
+    fetchData();
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
