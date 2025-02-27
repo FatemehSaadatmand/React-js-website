@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductPage.css";
-
+import {fetchProductDetails} from "./requests";
 
 const ProductPage = () => {
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
-    fetch(`https://kaaryar-ecom.liara.run/v1/products/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch product details");
-        }
-        return response.json();
-      })
+    fetchProductDetails (id)
       .then((data) => {
         setProduct(data);
         setLoading(false);
