@@ -25,8 +25,5 @@ export function fetchProductListData({ currentPage, productsPerPage, selectedCat
           totalItems: data.pagination.totalItems || 0,
         };
       })
-      .catch(() => {
-        throw new Error("Failed to fetch products");
-      });
   }
   
