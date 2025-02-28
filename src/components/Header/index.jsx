@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Header.css";
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -9,8 +9,6 @@ const Header = ({
   searchQuery,
   setSearchQuery,
   setCurrentPage,
-  cartItems,
-  setCartItems,
   totalPrice,
   totalItems,
 }) => {
@@ -79,7 +77,7 @@ const Header = ({
   return (
     <header className="header">
       <div className="top-bar">
-        <p><i class="color-red fa fa-phone"></i> +021-95-51-84 |<i class="color-red fa fa-envelope-o"></i> email@email.com |<i class="color-red fa fa-map-marker"></i> 1734 Stonecoal Road</p>
+        <p><i className="color-red fa fa-phone"></i> +021-95-51-84 |<i className="color-red fa fa-envelope-o"></i> email@email.com |<i className="color-red fa fa-map-marker"></i> 1734 Stonecoal Road</p>
         <div>
           <span><i className="color-red fa fa-dollar"></i> USD</span> | <span><i className="color-red fa fa-user-o"></i>My Account</span>
         </div>
@@ -112,17 +110,19 @@ const Header = ({
           <button className="btn searchbar-btn">Search</button>
         </div>
         <div className="cart-wish">
-        <i class="fa fa-heart-o"></i>
+        <i className="fa fa-heart-o"></i>
           <button className="btn btn-transparent">Wishlist</button>
-          <i class="fa fa-shopping-cart"></i>
-          <button className="btn btn-transparent">Cart <span className="added-to-cart">{totalItems}</span></button>
-        </div>
+          <i className="fa fa-shopping-cart"></i>
+          <Link to="/cart" className="btn btn-transparent">
+            Cart <span className="added-to-cart">{totalItems}</span>
+          </Link>
+         </div>
       </div>
       <div className="cart-total">
         <span>Total: ${totalPrice}</span>
       </div>
 			<div className="navbar">
-      <ul class="main-nav">
+      <ul className="main-nav">
 						<li className="navbar-items"><a className="navbar-a active-text" href="#">Home</a></li>
 						<li className="navbar-items"><a className="navbar-a" href="#">Categories</a></li>
 						<li className="navbar-items"><a className="navbar-a" href="#">Hot Deals</a></li>
