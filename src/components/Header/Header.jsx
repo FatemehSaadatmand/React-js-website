@@ -121,7 +121,6 @@ const Header = ({
       <div className="cart-total">
         <span>Total: ${totalPrice}</span>
       </div>
-<<<<<<< HEAD
 			<div className="navbar">
       <ul className="main-nav">
 						<li className="navbar-items"><a className="navbar-a active-text" href="#">Home</a></li>
@@ -132,18 +131,6 @@ const Header = ({
 						<li className="navbar-items"><a className="navbar-a" href="#">Cameras</a></li>
 						<li className="navbar-items"><a className="navbar-a" href="#">Accessories</a></li>
 					</ul>
-=======
-      <div className="navbar">
-      <ul class="main-nav">
-            <li className="navbar-items"><a className="navbar-a active-text" href="#">Home</a></li>
-            <li className="navbar-items"><a className="navbar-a" href="#">Categories</a></li>
-            <li className="navbar-items"><a className="navbar-a" href="#">Hot Deals</a></li>
-            <li className="navbar-items"><a className="navbar-a" href="#">Laptops</a></li>
-            <li className="navbar-items"><a className="navbar-a" href="#">Smartphones</a></li>
-            <li className="navbar-items"><a className="navbar-a" href="#">Cameras</a></li>
-            <li className="navbar-items"><a className="navbar-a" href="#">Accessories</a></li>
-          </ul>
->>>>>>> 8b54da35d8bf5f4bd34ca4a16613da96e5caa132
       </div>
     </header>
   );
