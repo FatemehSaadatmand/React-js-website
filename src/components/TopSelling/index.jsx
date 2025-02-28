@@ -16,7 +16,6 @@ const TopSelling = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched Data:", data);
         setTopProducts(data.slice(0, 3)); 
         setIsLoading(false);
       })
