@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
@@ -9,6 +8,7 @@ import BrandCheckbox from "./components/BrandCheckbox/BrandCheckbox";
 import RangeSlider from "./components/RangeSlider/RangeSlider";
 import TopSelling from "./components/TopSelling/TopSelling";
 import ProductPage from "./ProductPage/ProductPage";
+import CartPage from "./components/CartPage/CartPage"; 
 
 const App = () => {
   const [cartItems, setCartItems] = useState(
@@ -28,16 +28,19 @@ const App = () => {
   };
 
   const handleAddToCart = (product, quantity) => {
-    const updatedCart = [...cartItems];
-    const productIndex = updatedCart.findIndex((item) => item.id === product.id);
-
-    if (productIndex === -1) {
-      updatedCart.push({ ...product, quantity });
-    } else {
-      updatedCart[productIndex].quantity += quantity;
-    }
-
-    setCartItems(updatedCart);
+    setCartItems((prevCart) => {
+      const productIndex = prevCart.findIndex((item) => item._id === product._id);
+    
+      if (productIndex !== -1) {
+        return prevCart.map((item, index) =>
+          index === productIndex
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      } else {
+        return [...prevCart, { ...product, quantity }];
+      }
+    });
   };
 
   const totalPrice = cartItems
@@ -61,37 +64,34 @@ const App = () => {
       />
       <main>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <div className="flex">
-                  <div className="sidebar">
-                    <CategoryFilter
-                      selectedCategory={selectedCategory}
-                      setSelectedCategory={handleCategoryChange}
-                    />
-                    <RangeSlider />
-                    <BrandCheckbox />
-                    <TopSelling />
-                  </div>
-                  <div className="product-container">
-                    <ProductList
-                      selectedCategory={selectedCategory}
-                      currentPage={currentPage}
-                      setCurrentPage={setCurrentPage}
-                      searchQuery={searchQuery}
-                      setSearchQuery={setSearchQuery}
-                    />
-                  </div>
+          <Route path="/" element={
+            <div>
+              <div className="flex">
+                <div className="sidebar">
+                  <CategoryFilter
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={handleCategoryChange}
+                  />
+                  <RangeSlider />
+                  <BrandCheckbox />
+                  <TopSelling />
+                </div>
+                <div className="product-container">
+                  <ProductList
+                    selectedCategory={selectedCategory}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                  />
                 </div>
               </div>
-          }
-        />
-        <Route path="/product/:id" element={<ProductPage handleAddToCart={handleAddToCart} />} />
-      </Routes>
-     </main>
-
+            </div>
+          } />
+          <Route path="/product/:id" element={<ProductPage handleAddToCart={handleAddToCart} />} />
+          <Route path="/cart" element={<CartPage cartItems={cartItems} />} /> 
+        </Routes>
+      </main>
       <Footer />
     </Router>
   );
