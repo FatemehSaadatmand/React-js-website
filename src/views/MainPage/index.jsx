@@ -1,9 +1,9 @@
 // MainPage.jsx
 import React from "react";
-import CategoryFilter from "../../components/CategoryFilter/CategoryFilter";
-import RangeSlider from "../../components/RangeSlider/RangeSlider";
-import BrandCheckbox from "../../components/BrandCheckbox/BrandCheckbox";
-import TopSelling from "../../components/TopSelling/TopSelling";
+import CategoryFilter from "../../components/CategoryFilter";
+import RangeSlider from "../../components/RangeSlider";
+import BrandCheckbox from "../../components/BrandCheckbox";
+import TopSelling from "../../components/TopSelling";
 import ProductList from "../../components/ProductList";
 import "./MainPage.css"
 

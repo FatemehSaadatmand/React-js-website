@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import ProductPage from "./views/ProductPage/ProductPage";
-import MainPage from "./views/MainPage/MainPage"; 
-import CartPage from "./components/CartPage"; 
-import ProductPage from "./ProductPage";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import MainPage from "./views/MainPage"; 
+import CartPage from "./views/CartPage"; 
+import ProductPage from "./views/ProductPage";
 
 const App = () => {
   const [cartItems, setCartItems] = useState(
