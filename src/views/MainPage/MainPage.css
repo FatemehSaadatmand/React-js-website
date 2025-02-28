@@ -1,0 +1,25 @@
+.product-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 2fr));
+    gap: 16px;
+  
+  }
+  
+  
+  .flex {
+    width: 100%;
+    display: flex;
+    gap: 200px;
+  }
+    
+  .sidebar {
+    margin: 40px;
+  }
+  
+#products-per-page {
+    margin: 30px;
+    padding: 10px 20px;
+    background: #ffffff;
+    color: #5b5959;
+  }

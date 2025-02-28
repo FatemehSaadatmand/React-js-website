@@ -33,14 +33,14 @@ const TopSelling = () => {
         {topProducts.map((product) => (
           <div key={product._id} className="top-selling-card">
             <img
-              src={product.images[0]}  
+              src={product.images[0]}
               alt={product.name}
               className="top-selling-image"
             />
             <div className="top-selling-detail">
-                <p className="top-selling-category">{product.category.name}</p>
-                <h4 className="top-selling-name">{product.name}</h4>
-                <p className="top-selling-price">${product.price.toFixed(2)}</p>
+              <p className="top-selling-category">{product.category.name}</p>
+              <h4 className="top-selling-name">{product.name}</h4>
+              <p className="top-selling-price">${product.price.toFixed(2)}</p>
             </div>
           </div>
         ))}

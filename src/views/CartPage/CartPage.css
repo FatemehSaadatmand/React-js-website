@@ -1,0 +1,33 @@
+.cart-head{
+    font-style: 28px;
+    margin: 40px;
+    text-align: center;
+}
+.cart-item{
+    display: flex;
+    margin: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.547);
+}
+.cart-item-image{
+    width: 250px;
+    border-radius: 20px;
+    margin: 0px 60px;
+
+}
+.cart-item-name{
+    color: #D10024;
+}
+.cart-price, .cart-quantity, .total-of-each{
+    font-weight: bold;
+    font-style: 22px;
+  }
+
+.cart-summary{
+text-align: center;
+}
+.proceed-btn{
+    background: #D10024;
+
+    margin-bottom: 30px;
+}
