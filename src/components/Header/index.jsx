@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Header.css";
 import 'font-awesome/css/font-awesome.min.css';
+import { fetchCategoriesHeader } from "./requests";
 
 const Header = ({
   selectedCategory,
@@ -17,8 +18,7 @@ const Header = ({
   const location = useLocation();
 
   useEffect(() => {
-    fetch("https://kaaryar-ecom.liara.run/v1/categories")
-      .then((response) => response.json())
+    fetchCategoriesHeader()
       .then((data) => setCategories(data))
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);

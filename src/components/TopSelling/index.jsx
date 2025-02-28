@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { fetchTopSellingProducts } from "./requests"; 
 import "./TopSelling.css";
 
 const TopSelling = () => {
@@ -7,24 +8,14 @@ const TopSelling = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch("https://kaaryar-ecom.liara.run/v1/products/top-rated")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
+      setIsLoading(true);
+      fetchTopSellingProducts()
       .then((data) => {
         setTopProducts(data.slice(0, 3)); 
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.error("Fetch error:", err);
-        setError(`Failed to fetch top-rated products: ${err.message}`);
-        setIsLoading(false);
-      });
-  }, []);
+      .catch((error) => console.error("Error fetching top selling:", error));
+      }, []);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom"; 
 import "./CategoryFilter.css";
+import { fetchCategoriesMain } from "./requests";
 
 const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
@@ -8,12 +9,10 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch("https://kaaryar-ecom.liara.run/v1/categories")
-      .then((response) => response.json())
+    fetchCategoriesMain()
       .then((data) => setCategories(data))
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
-
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const categoryFromParams = params.get("category");
