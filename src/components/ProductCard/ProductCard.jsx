@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
                   </div>
             </div>
         <div className="add-to-cart">
-     <button className="btn add-to-cart-btn" tabindex="0"><i className="fa fa-shopping-cart"></i> add to cart</button>
+     <button className="btn add-to-cart-btn"><i className="fa fa-shopping-cart"></i> add to cart</button>
         </div>
        
     </div>
