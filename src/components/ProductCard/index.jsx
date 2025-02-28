@@ -14,11 +14,14 @@ const ProductCard = ({ product }) => {
           <p className="product-price">${product.price.toFixed(2)}</p> 
           <div className="product-rating">★★★★☆</div>
 
-          <div className="product-icons">
-            <i className="pruduct-i">♡</i>
-            <i className="pruduct-i">⇌</i>
-            <i className="pruduct-i">👁</i>
-          </div>
+                <div className="product-icons">
+                    <i className="pruduct-i">♡</i>
+                    <i className="pruduct-i">⇌</i>
+                    <i className="pruduct-i">👁</i>
+                  </div>
+            </div>
+        <div className="add-to-cart">
+     <button className="btn add-to-cart-btn"><i className="fa fa-shopping-cart"></i> add to cart</button>
         </div>
         <div className="add-to-cart">
           <button className="btn add-to-cart-btn" tabIndex="0">

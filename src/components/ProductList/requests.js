@@ -1,5 +1,6 @@
 
 import { PRODUCTS_URL } from "../../configs/urls";
+import {ROOT_CATEGORY} from "../../configs/constants"
 export function fetchProductListData({ currentPage, productsPerPage, selectedCategory, searchQuery }) {
     let url = PRODUCTS_URL;
     const params = {
@@ -7,7 +8,7 @@ export function fetchProductListData({ currentPage, productsPerPage, selectedCat
       limit: productsPerPage,
     };
   
-    if (selectedCategory && selectedCategory !== "All Categories") {
+    if (selectedCategory && selectedCategory !== ROOT_CATEGORY) {
       params.category = selectedCategory;
     }
   
@@ -25,8 +26,5 @@ export function fetchProductListData({ currentPage, productsPerPage, selectedCat
           totalItems: data.pagination.totalItems || 0,
         };
       })
-      .catch(() => {
-        throw new Error("Failed to fetch products");
-      });
   }
   

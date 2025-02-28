@@ -14,7 +14,6 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
       .then((data) => setCategories(data))
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
-
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const categoryFromParams = params.get("category");

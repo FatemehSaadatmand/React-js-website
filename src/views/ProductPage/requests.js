@@ -1,5 +1,4 @@
 import { PRODUCTS_URL } from "../configs/urls";
-
 export function fetchProductDetails (id) {
     return fetch(`${PRODUCTS_URL}/${id}`)
     .then((response) => {

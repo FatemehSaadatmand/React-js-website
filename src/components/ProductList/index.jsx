@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import ProductCard from "../ProductCard/ProductCard";
-import Pagination from "../Pagination/Pagination";
+import ProductCard from "../ProductCard";
+import Pagination from "../Pagination";
 import { fetchProductListData } from "./requests"; 
-import { ROOT_CATEGORY, QUERY_PARAMS, DEFAULT_PAGE } from "../../configs/constants";
+import { ROOT_CATEGORY, QUERY_PARAMS, DEFAULT_PAGE } from "../../configs/constants"
 
 const ProductList = ({ searchQuery }) => {
   const [products, setProducts] = useState([]);
