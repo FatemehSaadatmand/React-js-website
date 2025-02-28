@@ -19,8 +19,8 @@ const ProductCard = ({ product }) => {
                     <i className="pruduct-i">👁</i>
                   </div>
             </div>
-        <div class="add-to-cart">
-     <button class="btn add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+        <div className="add-to-cart">
+     <button className="btn add-to-cart-btn"><i className="fa fa-shopping-cart"></i> add to cart</button>
         </div>
        
     </div>
