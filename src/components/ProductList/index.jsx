@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import ProductCard from "../ProductCard";
 import Pagination from "../Pagination";
 import { fetchProductListData } from "./requests"; 
@@ -82,6 +83,10 @@ const ProductList = ({ searchQuery }) => {
       />
     </div>
   );
+};
+
+ProductList.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
 };
 
 export default ProductList;

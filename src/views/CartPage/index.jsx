@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./CartPage.css"; 
+import PropTypes from "prop-types";
 
 const CartPage = ({ cartItems }) => {
   if (cartItems.length === 0) {
@@ -36,5 +37,7 @@ const CartPage = ({ cartItems }) => {
     </div>
   );
 };
-
+CartPage.propTypes = {
+  cartItems: PropTypes.array.isRequired,
+  };  
 export default CartPage;

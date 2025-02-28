@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Header.css";
 import 'font-awesome/css/font-awesome.min.css';
 import { fetchCategoriesHeader } from "./requests";
+import PropTypes from "prop-types";
 
 const Header = ({
   selectedCategory,
@@ -136,5 +137,16 @@ const Header = ({
   );
 };
 
-export default Header;
+Header.propTypes = {
+  selectedCategory: PropTypes.string.isRequired,
+  setSelectedCategory: PropTypes.func.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  setSearchQuery: PropTypes.func.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  cartItems: PropTypes.array.isRequired,
+  setCartItems: PropTypes.func.isRequired,
+  totalPrice: PropTypes.number.isRequired,
+  totalItems: PropTypes.number.isRequired,
+};
 
+export default Header;

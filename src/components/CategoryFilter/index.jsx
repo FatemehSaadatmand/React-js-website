@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom"; 
 import "./CategoryFilter.css";
 import { fetchCategoriesMain } from "./requests";
+import PropTypes from "prop-types";
 
 const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
@@ -54,5 +55,9 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   );
 };
 
-export default CategoryFilter;
+CategoryFilter.propTypes = {
+  selectedCategory: PropTypes.string.isRequired,
+  setSelectedCategory: PropTypes.func.isRequired,
+};
 
+export default CategoryFilter;
