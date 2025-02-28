@@ -8,20 +8,14 @@ const TopSelling = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
       setIsLoading(true);
-      try {
-        const data = await fetchTopSellingProducts();
+      fetchTopSellingProducts()
+      .then((data) => {
         setTopProducts(data.slice(0, 3)); 
         setIsLoading(false);
-      } catch (err) {
-        setError(`Failed to fetch top-rated products: ${err.message}`);
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+      })
+      .catch((error) => console.error("Error fetching top selling:", error));
+      }, []);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;

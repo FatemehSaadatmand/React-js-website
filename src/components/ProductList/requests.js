@@ -1,5 +1,5 @@
 
-
+import {ROOT_CATEGORY} from "../../configs/constants"
 export function fetchProductListData({ currentPage, productsPerPage, selectedCategory, searchQuery }) {
     let url = "https://kaaryar-ecom.liara.run/v1/products";
     const params = {
@@ -7,7 +7,7 @@ export function fetchProductListData({ currentPage, productsPerPage, selectedCat
       limit: productsPerPage,
     };
   
-    if (selectedCategory && selectedCategory !== "All Categories") {
+    if (selectedCategory && selectedCategory !== ROOT_CATEGORY) {
       params.category = selectedCategory;
     }
   
