@@ -1,11 +1,11 @@
-// MainPage.jsx
 import React from "react";
 import CategoryFilter from "../../components/CategoryFilter";
 import RangeSlider from "../../components/RangeSlider";
 import BrandCheckbox from "../../components/BrandCheckbox";
 import TopSelling from "../../components/TopSelling";
 import ProductList from "../../components/ProductList";
-import "./MainPage.css"
+import "./MainPage.css";
+import PropTypes from "prop-types";
 
 const MainPage = ({
   selectedCategory,
@@ -40,5 +40,13 @@ const MainPage = ({
     </div>
   );
 };
-
+MainPage.propTypes = {
+  selectedCategory: PropTypes.string.isRequired,
+  setSelectedCategory: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  setSearchQuery: PropTypes.func.isRequired,
+  }
+    
 export default MainPage;

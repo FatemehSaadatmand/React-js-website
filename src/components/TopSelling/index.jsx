@@ -9,12 +9,15 @@ const TopSelling = () => {
 
   useEffect(() => {
       setIsLoading(true);
+      setError(null);
       fetchTopSellingProducts()
       .then((data) => {
         setTopProducts(data.slice(0, 3)); 
         setIsLoading(false);
       })
-      .catch((error) => console.error("Error fetching top selling:", error));
+      .catch((error) => { setError(error) 
+        setIsLoading(false)
+        console.error("Error fetching top selling:", error)});
       }, []);
 
   if (isLoading) return <p>Loading...</p>;
