@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import CategoryFilter from "./components/CategoryFilter";
 import ProductList from "./components/ProductList";
-import BrandCheckbox from "./components/BrandCheckbox/BrandCheckbox";
-import RangeSlider from "./components/RangeSlider/RangeSlider";
-import TopSelling from "./components/TopSelling/TopSelling";
-import ProductPage from "./ProductPage/ProductPage";
-import CartPage from "./components/CartPage/CartPage"; 
+import BrandCheckbox from "./components/BrandCheckbox";
+import RangeSlider from "./components/RangeSlider";
+import TopSelling from "./components/TopSelling";
+import ProductPage from "./ProductPage";
+import CartPage from "./components/CartPage"; 
+
 
 const App = () => {
   const [cartItems, setCartItems] = useState(

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import ProductCard from "./ProductCard/ProductCard";
-import Pagination from "./Pagination/Pagination";
+import ProductCard from "./ProductCard";
+import Pagination from "./Pagination";
 import { ROOT_CATEGORY, QUERY_PARAMS, DEFAULT_PAGE} from "../configs/constants";
 
 const ProductList = ({ searchQuery }) => {
