@@ -8,20 +8,14 @@ const TopSelling = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
       setIsLoading(true);
-      try {
-        const data = await fetchTopSellingProducts();
+      fetchTopSellingProducts()
+      .then((data) => {
         setTopProducts(data.slice(0, 3)); 
         setIsLoading(false);
-      } catch (err) {
-        setError(`Failed to fetch top-rated products: ${err.message}`);
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+      })
+      .catch((error) => console.error("Error fetching top selling:", error));
+      }, []);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -33,14 +27,14 @@ const TopSelling = () => {
         {topProducts.map((product) => (
           <div key={product._id} className="top-selling-card">
             <img
-              src={product.images[0]}  
+              src={product.images[0]}
               alt={product.name}
               className="top-selling-image"
             />
             <div className="top-selling-detail">
-                <p className="top-selling-category">{product.category.name}</p>
-                <h4 className="top-selling-name">{product.name}</h4>
-                <p className="top-selling-price">${product.price.toFixed(2)}</p>
+              <p className="top-selling-category">{product.category.name}</p>
+              <h4 className="top-selling-name">{product.name}</h4>
+              <p className="top-selling-price">${product.price.toFixed(2)}</p>
             </div>
           </div>
         ))}

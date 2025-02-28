@@ -8,7 +8,4 @@ export function fetchTopSellingProducts() {
         }
         return response.json();
       })
-      .catch((error) => {
-        throw new Error("Error fetching top-rated products: " + error.message);
-      });
   }
