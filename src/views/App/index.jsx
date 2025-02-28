@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import CategoryFilter from "./components/CategoryFilter";
-import ProductList from "./components/ProductList";
-import BrandCheckbox from "./components/BrandCheckbox";
-import RangeSlider from "./components/RangeSlider";
-import TopSelling from "./components/TopSelling";
-import ProductPage from "./ProductPage";
-import CartPage from "./components/CartPage"; 
-
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import MainPage from "../MainPage"; 
+import CartPage from "../CartPage"; 
+import ProductPage from "../ProductPage";
 
 const App = () => {
   const [cartItems, setCartItems] = useState(
@@ -65,32 +60,21 @@ const App = () => {
       />
       <main>
         <Routes>
-          <Route path="/" element={
-            <div>
-              <div className="flex">
-                <div className="sidebar">
-                  <CategoryFilter
-                    selectedCategory={selectedCategory}
-                    setSelectedCategory={handleCategoryChange}
-                  />
-                  <RangeSlider />
-                  <BrandCheckbox />
-                  <TopSelling />
-                </div>
-                <div className="product-container">
-                  <ProductList
-                    selectedCategory={selectedCategory}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}
-                  />
-                </div>
-              </div>
-            </div>
-          } />
-          <Route path="/product/:id" element={<ProductPage handleAddToCart={handleAddToCart} />} />
-          <Route path="/cart" element={<CartPage cartItems={cartItems} />} /> 
+          <Route
+            path="/"
+            element={
+              <MainPage
+                selectedCategory={selectedCategory}
+                setSelectedCategory={handleCategoryChange}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+              />
+            }
+          />
+                    <Route path="/product/:id" element={<ProductPage handleAddToCart={handleAddToCart} />} />
+                    <Route path="/cart" element={<CartPage cartItems={cartItems} />} /> 
         </Routes>
       </main>
       <Footer />
@@ -99,4 +83,3 @@ const App = () => {
 };
 
 export default App;
-
