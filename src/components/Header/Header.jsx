@@ -112,17 +112,11 @@ const Header = ({
         <div className="cart-wish">
         <i className="fa fa-heart-o"></i>
           <button className="btn btn-transparent">Wishlist</button>
-<<<<<<< HEAD
           <i className="fa fa-shopping-cart"></i>
-          <button className="btn btn-transparent">Cart <span className="added-to-cart">{totalItems}</span></button>
-        </div>
-=======
-          <i class="fa fa-shopping-cart"></i>
           <Link to="/cart" className="btn btn-transparent">
             Cart <span className="added-to-cart">{totalItems}</span>
           </Link>
          </div>
->>>>>>> 8b54da35d8bf5f4bd34ca4a16613da96e5caa132
       </div>
       <div className="cart-total">
         <span>Total: ${totalPrice}</span>
