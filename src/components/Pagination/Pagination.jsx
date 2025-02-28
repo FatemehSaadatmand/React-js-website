@@ -1,6 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Pagination.css";
-
 
 const Pagination = ({ currentPage, setPage, totalProducts, productsPerPage }) => {
   const totalPages = Math.max(1, Math.ceil(totalProducts / productsPerPage));
@@ -40,5 +40,11 @@ const Pagination = ({ currentPage, setPage, totalProducts, productsPerPage }) =>
   );
 };
 
-export default Pagination;
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
+  totalProducts: PropTypes.number.isRequired,
+  productsPerPage: PropTypes.number.isRequired,
+};
 
+export default Pagination;
