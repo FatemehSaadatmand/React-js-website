@@ -1,6 +1,7 @@
+import { PRODUCTS_TOP_RATED_URL } from "../../configs/urls";
 
 export function fetchTopSellingProducts() {
-    return fetch("https://kaaryar-ecom.liara.run/v1/products/top-rated")
+    return fetch(PRODUCTS_TOP_RATED_URL)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

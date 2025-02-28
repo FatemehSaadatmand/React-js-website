@@ -1,4 +1,6 @@
+import { PRODUCTS_BY_CATEGORY_URL } from "../../configs/urls";
+
 export function fetchCategoriesHeader() {
-    return fetch("https://kaaryar-ecom.liara.run/v1/categories")
+    return fetch(PRODUCTS_BY_CATEGORY_URL)
       .then((response) => response.json())
   }

@@ -1,7 +1,8 @@
 
+import { PRODUCTS_URL } from "../../configs/urls";
 import {ROOT_CATEGORY} from "../../configs/constants"
 export function fetchProductListData({ currentPage, productsPerPage, selectedCategory, searchQuery }) {
-    let url = "https://kaaryar-ecom.liara.run/v1/products";
+    let url = PRODUCTS_URL;
     const params = {
       page: currentPage,
       limit: productsPerPage,
